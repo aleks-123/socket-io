@@ -1,11 +1,12 @@
 const users = [];
 
-// addUser, removeUser, getUser, getUsersInRoom
-
 const addUser = ({ id, username, room }) => {
   // Clean the data
-  username = username.trim().toLowerCase();
-  room = room.trim().toLowerCase();
+
+  console.log(username);
+  console.log(room);
+  // username = username.trim().toLowerCase();
+  // room = room.trim().toLowerCase();
 
   //validate the data
   if (!username || !room) return { error: "Username and room are required" };
@@ -30,4 +31,21 @@ const removeUser = (id) => {
   if (index !== -1) {
     return users.splice(index, 1)[0];
   }
+};
+
+const getUser = (id) => {
+  const findUser = users.find((user) => user.id === id);
+  return findUser;
+};
+
+const getUsersInRoom = (room) => {
+  const userRoom = users.filter((user) => user.room === room);
+  return userRoom;
+};
+
+module.exports = {
+  addUser,
+  removeUser,
+  getUser,
+  getUsersInRoom,
 };
